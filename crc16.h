@@ -1,24 +1,7 @@
-/*
+#ifndef CRC_H
+#define CRC_H
 
- * crc16.h
+short CRC(short crc, char data);
+short get_CRC(unsigned char *commands, int size);
 
- *
-
- *  Created on: 18/03/2014
-
- *      Author: Renato Coral Sampaio
-
- */
-
-
-#ifndef CRC16_H_
-
-#define CRC16_H_
-
-
-short CRC16(short crc, char data);
-
-short calcula_CRC(unsigned char *commands, int size);
-
-
-#endif /* CRC16_H_ */
+#endif

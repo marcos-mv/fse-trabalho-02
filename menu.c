@@ -26,6 +26,7 @@ void menu()
         tempo = 1;
         printf("Frango a Passarinho\n");
         printf("Temperatura %d Tempo: %d min\n", temperatura, tempo);
+        ()
 
         break;
     case 2:

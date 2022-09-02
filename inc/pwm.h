@@ -12,5 +12,10 @@
  
 int control(int, int);
 int turn_off(int);
+int inicializar();
+int aquecer(int);
+int refriar(int);
+int desligar();
+
 
 #endif

@@ -1,5 +1,8 @@
 #include "uart.h"
 
+const unsigned char SOLICITARTEMP = 0XC1;
+
+
 int open_uart() {
     return open("/dev/serial0", O_RDWR | O_NOCTTY | O_NDELAY);
 }
@@ -17,6 +20,11 @@ void set_attributes(int uart_filestream) {
 
 void send_request(int uart_filestream, unsigned char code, unsigned char sub_code, int flag_data, int data) {
     unsigned char tx_buffer[13] = {DEVICE, code, sub_code, 0x02, 0x08, 0x04, 0x05};
+    
+    for(int i =0 ; i<13; i++){
+        printf("%x \n",tx_buffer);
+    }
+
     int crc_size = 7; 
     // flag = 1 -> data exists
     if(flag_data){

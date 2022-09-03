@@ -1,9 +1,20 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+
 #include "uart.h"
 #include "pwm.h"
 #include "menu.h"
 
-void LigaForno(){
-    printf("%f",get_temperature(SOLICITARTEMP));
+
+void SolicitaTempInterna(){
+
+
+    while(1){
+        printf("%f",get_temperature(SOLICITARTEMP));
+        sleep(1);
+    }
     
 }
 void modo2(){
@@ -35,7 +46,7 @@ int main(){
     printf("1 - Liga o Forno      2 - Desliga o Forno\n");
     printf("3 - Inicia Aquecimento      4 - Cancela processo\n");    
     printf("5 - Tempo +      6 - Tempo -\n");    
-    printf("7 - Menu      8 - Modo 8\n");
+    printf("7 - Menu      8 - Solicita Temp interna\n");
 
     scanf("%d", &opcao);
 
@@ -44,7 +55,7 @@ int main(){
     switch(opcao){
         case 1:
             printf("Ligando Forno\n");
-            LigaForno();
+            SolicitaTempInterna();
             break;
         case 2:
             printf("Desligando Forno.\n");

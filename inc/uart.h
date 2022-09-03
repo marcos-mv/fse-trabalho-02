@@ -20,7 +20,10 @@ int send_control_signal(int);
 #define SOLICITARTEMP 0XC1
 #define SOLICITARTEMPREF 0xC2
 #define LECOMANDOUSUARIO 0xC3
-// #define SOLICITARTEMPREF 0xC2
-#define SEND_SIGNAL 0xD1
+
+#define SEND_SIGNAL_CONTROL 0xD1
+#define SEND_SIGNAL_REF 0xD2
+// #define 
+
 
 #endif

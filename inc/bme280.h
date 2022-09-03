@@ -9,8 +9,10 @@
 #include <sys/ioctl.h>
 #include <linux/i2c-dev.h>
 
-int bme280Init(int iChannel, int iAddr);
-int bme280ReadValues(int *T, int *P, int *H);
-float get_external_temperature();
+// int bme280Init(int iChannel, int iAddr);
+// int bme280ReadValues(int *T, int *P, int *H);
+// float get_external_temperature();
+
+void TemperaturaAmbienteBME280();
 
 #endif // __BME280__

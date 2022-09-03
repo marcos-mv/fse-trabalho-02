@@ -6,39 +6,43 @@
 #include "uart.h"
 #include "pwm.h"
 #include "menu.h"
+#include "bme280.h"
 
 void SolicitaTempInterna()
 {
-
-    while (1)
-    {
-        printf("%f", get_temperature(SOLICITARTEMP));
-        sleep(1);
-    }
+    printf("Temperatura Interna: %.2f \n", get_temperature(SOLICITARTEMP));
 }
 void SolicitaTempRef()
 {
+    printf("Temperatura de Referência: %.2f \n", get_temperature(SOLICITARTEMPREF));
+}
+void SolicitaTempAmbiente()
+{
+    printf("Temperatura Ambiente BME280: %.2f \n", TemperaturaAmbienteBME280());
+}
+void LeComandoUsuario()
+{
     while (1)
     {
-        printf("%f", get_temperature(SOLICITARTEMPREF));
+        printf("Lendo Comandos do Usuário: %d\n", (LECOMANDOUSUARIO));
         sleep(1);
     }
 }
-void LeComandoUsuario(){
-
+void EnviaSinalControle()
+{
     while (1)
     {
-        printf("%f", get_temperature(LECOMANDOUSUARIO));
+        printf("Enviando Sinal de Controle: %d\n", send_control_signal(SEND_SIGNAL_CONTROL));
         sleep(1);
     }
 }
-void modo4()
+void EnviaSinalReferencia()
 {
-    printf("modo 4\n");
-}
-void modo5()
-{
-    printf("modo 5\n");
+    while (1)
+    {
+        printf("Envia Sinal de Referência %d\n", get_temperature(LECOMANDOUSUARIO));
+        sleep(1);
+    }
 }
 void modo6()
 {
@@ -60,8 +64,11 @@ int main()
     printf("1 - Liga o Forno      2 - Desliga o Forno\n");
     printf("3 - Inicia Aquecimento      4 - Cancela processo\n");
     printf("5 - Tempo +      6 - Tempo -\n");
-    printf("7 - Menu      8 - Solicita Temp interna\n");
-    printf("9 - Solicita Temperatura de Referência      10 - Lê comandos do Usuário\n");
+    printf("7 - Menu      8 - Solicita Temp interna e de Referência\n");
+    printf("9 - Lê comandos do Usuário\n");
+    printf("10 - Envia Sinal de Controle      11 - Envia Sinal de Referência\n");
+    printf("12 - Envia Estado do Sistema      13 - Modo de Controle da Temperatura de Referência\n");
+    printf("13 - Envia Estado de Funcionamento      14 - Envia Valor do Temporizador\n");
 
     scanf("%d", &opcao);
 
@@ -80,31 +87,43 @@ int main()
         break;
     case 4:
         printf("Processo Cancelado.\n");
-        modo4();
+
         break;
     case 5:
         printf("Mais 1 min.\n");
-        modo5();
+
         break;
     case 6:
         printf("Menos 1 min.\n");
-        modo6();
+
         break;
     case 7:
         printf("Acessando Menu.\n");
         menu();
         break;
     case 8:
-        printf("Solicitando TempREF.\n");
-        SolicitaTempInterna();
+        printf("Solicitando Temp Interna.e de Referencia\n");
+        
+        while (1)
+        {   
+            sleep(1);
+            SolicitaTempInterna();
+            SolicitaTempRef();
+            SolicitaTempAmbiente();
+        }
+
         break;
     case 9:
-        printf("Solicitando TempREF.\n");
-        SolicitaTempRef();
-        break;
-    case 10:
         printf("Lendo Comandos do Usuário.\n");
         LeComandoUsuario();
+        break;
+    case 10:
+        printf("Envia Sinal de Controle.\n");
+        EnviaSinalControle();
+        break;
+    case 11:
+        printf("Envia Sinal de Referência.\n");
+        EnviaSinalReferencia();
         break;
     default:
         printf("Modo inexistente. PorFavor escolha novamente.\n");

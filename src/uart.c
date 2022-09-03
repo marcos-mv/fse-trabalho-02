@@ -26,7 +26,7 @@ void send_request(int uart_filestream, unsigned char code, unsigned char sub_cod
     unsigned char tx_buffer[13] = {DEVICE, code, sub_code, 0x00, 0x07, 0x04, 0x07};
     
     // for(int i =0 ; i<13; i++){
-    //     printf("%x \n",tx_buffer[i]);
+    //     printf("Valor : %x Posição: %d \n",tx_buffer[i],i);
     // }
 
     int crc_size = 7; 
@@ -69,9 +69,9 @@ float get_temperature(unsigned char sub_code) {
     sleep(1);
     read_response(uart_filestream, &rx_buffer[0]);
 
-    for(int i =0 ; i<13; i++){
-        printf("-%x \n",rx_buffer[i]);
-    }
+    // for(int i =0 ; i<13; i++){
+    //     printf("-%x \n",rx_buffer[i]);
+    // }
 
     memcpy(&temperature, &rx_buffer[3], 4);
     memcpy(&crc, &rx_buffer[7], 2);
@@ -80,6 +80,8 @@ float get_temperature(unsigned char sub_code) {
     if (rx_buffer[0] != 0x00 || rx_buffer[1] != 0x23 || rx_buffer[2] != sub_code || crc != check_crc)
         return -1.0;
     close(uart_filestream);
+
+    // printf("Temperatura Interna %f \n", temperature);
 
     return temperature;
 }
@@ -93,8 +95,23 @@ int send_control_signal(int control_signal) {
     }
 
     set_attributes(uart_filestream);
-    send_request(uart_filestream, SEND_CODE, SEND_SIGNAL, 1, control_signal);
+    send_request(uart_filestream, SEND_CODE, SEND_SIGNAL_CONTROL, 1, control_signal);
     close(uart_filestream);
 
     return 0;
 }
+
+// int send_referecial_signal(int referencial_signal) {
+//     int uart_filestream = -1;
+
+//     uart_filestream = open_uart();
+//     if (uart_filestream == -1) {
+//         return -1;
+//     }
+
+//     set_attributes(uart_filestream);
+//     send_request(uart_filestream, SEND_CODE, SEND_SIGNAL_REF, 1, referencial_signal);
+//     close(uart_filestream);
+
+//     return 0;
+// }

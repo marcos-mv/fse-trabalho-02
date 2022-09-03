@@ -14,6 +14,7 @@ void menu()
     printf("3 - Pão de Queijo      4 - Coxinha de Frango\n");
     printf("5 - Pudim      6 - Costelinha de Porco -\n");
     printf("7 - Batata Frita      8 - Almôndegas\n");
+    printf("9 - Voltar a tela Inicial.\n");
 
     scanf("%d", &opcao);
 
@@ -74,6 +75,13 @@ void menu()
         tempo = 1;
         printf("Almôndegas\n");
         printf("Temperatura: %d Tempo: %d min\n", temperatura, tempo);
+
+        break;
+    case 9:
+        temperatura = 90;
+        tempo = 1;
+        printf("Voltando para Tela Inicial\n");
+        telainicial();
 
         break;
     default:

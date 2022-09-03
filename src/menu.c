@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "telainicial.h"
 
 void menu()
 {
@@ -81,7 +82,7 @@ void menu()
         temperatura = 90;
         tempo = 1;
         printf("Voltando para Tela Inicial\n");
-        telainicial();
+        telaInicial();
 
         break;
     default:

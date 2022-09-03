@@ -9,6 +9,43 @@
 #include "bme280.h"
 #include "temperaturas.h"
 
+
+
+// void LeComandoUsuario()
+// {
+//     while (1)
+//     {
+//         printf("Lendo Comandos do Usuário: %f\n", (LECOMANDOUSUARIO));
+//         sleep(1);
+//     }
+// }
+// void EnviaSinalControle()
+// {
+//     while (1)
+//     {
+//         printf("Enviando Sinal de Controle: %d\n", send_control_signal(SEND_SIGNAL_CONTROL));
+//         sleep(1);
+//     }
+// }
+// void EnviaSinalReferencia()
+// {
+//     while (1)
+//     {
+//         printf("Envia Sinal de Referência %d\n", get_temperature(LECOMANDOUSUARIO));
+//         sleep(1);
+//     }
+// }
+// void modo6()
+// {
+//     printf("modo 6\n");
+// }
+// void modo8()
+// {
+//     printf("modo 8\n");
+// }
+
+
+
 void telaInicial(){
     int opcao = 0;
 
@@ -70,15 +107,15 @@ void telaInicial(){
         break;
     case 9:
         printf("Lendo Comandos do Usuário.\n");
-        LeComandoUsuario();
+        // LeComandoUsuario();
         break;
     case 10:
         printf("Envia Sinal de Controle.\n");
-        EnviaSinalControle();
+        // EnviaSinalControle();
         break;
     case 11:
         printf("Envia Sinal de Referência.\n");
-        EnviaSinalReferencia();
+        // EnviaSinalReferencia();
         break;
     default:
         printf("Modo inexistente. PorFavor escolha novamente.\n");

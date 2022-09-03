@@ -1,4 +1,4 @@
-#include "crc.h"
+#include "crc16.h"
 
 short CRC(short crc, char data)
 {

@@ -1,32 +1,9 @@
 #include "pwm.h"
-
-int control(int pin, int value)
-{
-    if (wiringPiSetup() == -1)
-    {
-        return 1;
-    }
-
-    softPwmCreate(pin, 1, 100);
-    softPwmWrite(pin, value);
-    delay(10);
-
-    return 0;
-}
-
-int turn_off(int pin)
-{
-    if (wiringPiSetup() == -1)
-    {
-        return 1;
-    }
-
-    softPwmCreate(pin, 1, 100);
-    softPwmWrite(pin, 0);
-    delay(10);
-
-    return 0;
-}
+#include <stdio.h>
+#include <stdlib.h>
+#include "wiringPi.h"
+#include "softPwm.h"
+#include <unistd.h>
 
 int inicializar()
 {
@@ -58,4 +35,5 @@ int desligar()
 {
     softPwmStop(RESISTOR);
     softPwmStop(FAN);
+    return EXIT_SUCCESS;
 }

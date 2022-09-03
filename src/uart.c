@@ -1,7 +1,11 @@
 #include "uart.h"
-
-const unsigned char SOLICITARTEMP = 0XC1;
-
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <termios.h>
+#include <stdlib.h>
+#include "crc16.h"
 
 int open_uart() {
     return open("/dev/serial0", O_RDWR | O_NOCTTY | O_NDELAY);
@@ -19,10 +23,10 @@ void set_attributes(int uart_filestream) {
 }
 
 void send_request(int uart_filestream, unsigned char code, unsigned char sub_code, int flag_data, int data) {
-    unsigned char tx_buffer[13] = {DEVICE, code, sub_code, 0x02, 0x08, 0x04, 0x05};
+    unsigned char tx_buffer[13] = {DEVICE, code, sub_code, 0x00, 0x07, 0x04, 0x07};
     
     for(int i =0 ; i<13; i++){
-        printf("%x \n",tx_buffer);
+        printf("%x \n",tx_buffer[i]);
     }
 
     int crc_size = 7; 
@@ -39,8 +43,14 @@ void send_request(int uart_filestream, unsigned char code, unsigned char sub_cod
 }
 
 void read_response(int uart_filestream, unsigned char* rx_buffer) {
-    int rx_length = read(uart_filestream, (void*)rx_buffer, 10);
-    rx_buffer[rx_length] = '\0';
+    int rx_length = read(uart_filestream, (void*)rx_buffer, 11);
+
+    for(int i =0 ; i<13; i++){
+        printf("---%x \n",rx_buffer[i]);
+    }
+
+    printf("%d\n",rx_length);
+    // rx_buffer[rx_length] = '\0';
 }
 
 float get_temperature(unsigned char sub_code) {
@@ -56,8 +66,12 @@ float get_temperature(unsigned char sub_code) {
 
     set_attributes(uart_filestream);
     send_request(uart_filestream, GET_CODE, sub_code, 0, 0);
-    usleep(100000);
+    sleep(1);
     read_response(uart_filestream, &rx_buffer[0]);
+
+    for(int i =0 ; i<13; i++){
+        printf("-%x \n",rx_buffer[i]);
+    }
 
     memcpy(&temperature, &rx_buffer[3], 4);
     memcpy(&crc, &rx_buffer[7], 2);

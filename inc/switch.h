@@ -3,7 +3,7 @@
 
 #include <string.h>
 #include "uart.h"
-#include "crc.h"
+#include "crc16.h"
 
 int get_switch_status(unsigned char code);
 

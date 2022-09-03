@@ -1,20 +1,9 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <signal.h>
-#include <time.h>
-#include <pthread.h>
-#include <string.h>
-#include "switch.h"
-#include "onoff.h"
 #include "uart.h"
-#include "lcd.h"
-#include "bme280.h"
 #include "pwm.h"
-#include "pid.h"
 #include "menu.h"
 
-void testeUart(){
-    get_temperature(SOLICITARTEMP);
+void LigaForno(){
+    printf("%f",get_temperature(SOLICITARTEMP));
     
 }
 void modo2(){

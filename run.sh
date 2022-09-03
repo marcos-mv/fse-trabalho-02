@@ -1,2 +1,2 @@
 #!/bin/bash
-gcc main.c menu.c -o main && ./main
+make clean && make && make run

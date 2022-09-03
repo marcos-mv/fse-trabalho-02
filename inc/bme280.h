@@ -13,6 +13,6 @@
 // int bme280ReadValues(int *T, int *P, int *H);
 // float get_external_temperature();
 
-void TemperaturaAmbienteBME280();
+float TemperaturaAmbienteBME280();
 
 #endif // __BME280__

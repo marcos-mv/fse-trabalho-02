@@ -1,16 +1,9 @@
-// Distributed with a free-will license.
-// Use it any way you want, profit or free, provided it fits in the licenses of its associated works.
-// BME280
-// This code is designed to work with the BME280_I2CS I2C Mini Module available from ControlEverything.com.
-// https://www.controleverything.com/content/Humidity?sku=BME280_I2CS#tabs-0-product_tabset-2
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <linux/i2c-dev.h>
 #include <sys/ioctl.h>
 #include <fcntl.h>
-
-void TemperaturaAmbienteBME280()
+float TemperaturaAmbienteBME280()
 {
 	// Create I2C bus
 	int file;
@@ -190,8 +183,10 @@ void TemperaturaAmbienteBME280()
 	}
 
 	// Output data to screen
-	printf("Temperature in Celsius : %.2f C \n", cTemp);
-	printf("Temperature in Fahrenheit : %.2f F \n", fTemp);
-	printf("Pressure : %.2f hPa \n", pressure);
-	printf("Relative Humidity : %.2f RH \n", humidity);
+	// printf("Temperatura in Celsius : %.2f C \n", cTemp);
+	// printf("Temperature in Fahrenheit : %.2f F \n", fTemp);
+	// printf("Pressure : %.2f hPa \n", pressure);
+	// printf("Relative Humidity : %.2f RH \n", humidity);
+
+	return cTemp;
 }

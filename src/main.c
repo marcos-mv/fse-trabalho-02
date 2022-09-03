@@ -102,7 +102,7 @@ int main()
         menu();
         break;
     case 8:
-        printf("Solicitando Temp Interna.e de Referencia\n");
+        printf("Solicitando Temp Interna, de Referencia e Ambiente\n");
         
         while (1)
         {   

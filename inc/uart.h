@@ -6,10 +6,9 @@
 #define GET_CODE 0x23
 #define SEND_CODE 0x16
 
-#define INTERNAL 0xC1
-#define REFERENCE 0xC2
-#define SWITCH_STATUS 0xC3
-#define SEND_SIGNAL 0xD1
+// #define INTERNAL 0xC1
+// #define REFERENCE 0xC2
+// #define SWITCH_STATUS 0xC3
 
 int open_uart();
 void set_attributes(int);
@@ -19,5 +18,9 @@ float get_temperature(unsigned char);
 int send_control_signal(int);
 
 #define SOLICITARTEMP 0XC1
+#define SOLICITARTEMPREF 0xC2
+#define LECOMANDOUSUARIO 0xC3
+// #define SOLICITARTEMPREF 0xC2
+#define SEND_SIGNAL 0xD1
 
 #endif

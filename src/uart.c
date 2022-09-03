@@ -25,9 +25,9 @@ void set_attributes(int uart_filestream) {
 void send_request(int uart_filestream, unsigned char code, unsigned char sub_code, int flag_data, int data) {
     unsigned char tx_buffer[13] = {DEVICE, code, sub_code, 0x00, 0x07, 0x04, 0x07};
     
-    for(int i =0 ; i<13; i++){
-        printf("%x \n",tx_buffer[i]);
-    }
+    // for(int i =0 ; i<13; i++){
+    //     printf("%x \n",tx_buffer[i]);
+    // }
 
     int crc_size = 7; 
     // flag = 1 -> data exists
@@ -45,11 +45,11 @@ void send_request(int uart_filestream, unsigned char code, unsigned char sub_cod
 void read_response(int uart_filestream, unsigned char* rx_buffer) {
     int rx_length = read(uart_filestream, (void*)rx_buffer, 11);
 
-    for(int i =0 ; i<13; i++){
-        printf("---%x \n",rx_buffer[i]);
-    }
+    // for(int i =0 ; i<13; i++){
+    //     printf("---%x \n",rx_buffer[i]);
+    // }
 
-    printf("%d\n",rx_length);
+    // printf("%d\n",rx_length);
     // rx_buffer[rx_length] = '\0';
 }
 

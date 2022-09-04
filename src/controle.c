@@ -6,7 +6,6 @@ void leComandoUsuario()
     {
         printf("Lendo Comandos do Usuário: %d\n", get_user_comand(LECOMANDOUSUARIO));
         int comando = get_user_comand(LECOMANDOUSUARIO);
-        sleep(1);
 
         if (comando == 0x02)
         {
@@ -20,6 +19,7 @@ void leComandoUsuario()
             while (get_user_comand(LECOMANDOUSUARIO) != 0x02 || get_user_comand(LECOMANDOUSUARIO) != 0x04)
             {
                 get_user_comand(LECOMANDOUSUARIO);
+                printf("\ncomando usuario: %d", get_user_comand(LECOMANDOUSUARIO));
                 SolicitaTempInterna();
                 SolicitaTempRef();
                 SolicitaTempAmbiente();
@@ -35,18 +35,23 @@ void leComandoUsuario()
         else if (comando == 0x05)
         {
             printf("+ 1 minuto\n");
+            maisUmMinuto(1,200);
         }
         else if (comando == 0x06)
         {
             printf("- 1 minuto\n");
+            menosUmMinuto(1,100);
         }
         else if (comando == 0x07)
         {
             printf("Abrindo menu");
+            menu();
         }
         else
         {
+            printf("Comando Inexistente.\n");            
         }
+        usleep(1000000);
     }
 }
 void EnviaSinalControle()
@@ -54,7 +59,7 @@ void EnviaSinalControle()
     while (1)
     {
         printf("Enviando Sinal de Controle: %d\n", send_control_signal(SEND_SIGNAL_CONTROL));
-        sleep(1);
+        usleep(600000);
     }
 }
 void EnviaSinalReferencia()
@@ -62,7 +67,7 @@ void EnviaSinalReferencia()
     while (1)
     {
         printf("Envia Sinal de Referência %d\n", get_temperature(LECOMANDOUSUARIO));
-        sleep(1);
+        usleep(600000);
     }
 }
 

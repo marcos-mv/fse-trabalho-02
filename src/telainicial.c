@@ -12,7 +12,6 @@
 #include "telainicial.h"
 #include "controle.h"
 
-
 void telaInicial(int tempo, float temperatura)
 {
     int opcao = 0;
@@ -31,10 +30,10 @@ void telaInicial(int tempo, float temperatura)
     printf("2 - Inicia Aquecimento              3 - Cancela processo\n");
     printf("4 - Tempo +                         5 - Tempo -\n");
     printf("6 - Menu\n\n");
-    printf("7 - Solicita Temperaturas           8 - Lê comandos do Usuário\n");
-    printf("9 - Envia Sinal de Controle         10 - Envia Sinal de Referência\n");
-    printf("11 - Envia Estado do Sistema        12 - Modo de Controle da Temperatura de Referência\n");
-    printf("13 - Envia Estado de Funcionamento  14 - Envia Valor do Temporizador\n");
+    // printf("7 - Solicita Temperaturas           8 - Lê comandos do Usuário\n");
+    // printf("9 - Envia Sinal de Controle         10 - Envia Sinal de Referência\n");
+    // printf("11 - Envia Estado do Sistema        12 - Modo de Controle da Temperatura de Referência\n");
+    // printf("13 - Envia Estado de Funcionamento  14 - Envia Valor do Temporizador\n");
 
     printf("\n\nEsperando comando do usuário na Dasboard\n\n");
 

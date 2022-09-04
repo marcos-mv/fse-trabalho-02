@@ -22,13 +22,13 @@ void menu()
     int tempo = 0;
     char alimento[16];
 
-    printf("=== Lista de Alimentos ===\n");
-    printf("Escolha um alimento abaixo.\n");
+    printf("\n\n        === Lista de Alimentos ===\n");
+    printf("Escolha um alimento abaixo.\n\n");
 
     printf("1 - Frango                  2 - Peixe \n");
     printf("3 - Pão de Queijo           4 - Coxinha de Frango\n");
-    printf("5 - Pudim                   6 - Costelinha de Porco -\n");
-    printf("7 - Batata Frita            8 - Voltar a tela Inicial.\n");
+    printf("5 - Pudim                   6 - Carne de Porco -\n");
+    printf("7 - Batata Frita            8 - Voltar a tela Inicial.\n\n");
 
     scanf("%d", &opcao);
 

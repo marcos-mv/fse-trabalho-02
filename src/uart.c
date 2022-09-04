@@ -66,7 +66,7 @@ float get_temperature(unsigned char sub_code) {
 
     set_attributes(uart_filestream);
     send_request(uart_filestream, GET_CODE, sub_code, 0, 0);
-    sleep(1);
+    usleep(600000);
     read_response(uart_filestream, &rx_buffer[0]);
 
     // for(int i =0 ; i<13; i++){
@@ -99,7 +99,7 @@ int get_user_comand(unsigned char sub_code) {
 
     set_attributes(uart_filestream);
     send_request(uart_filestream, GET_CODE, sub_code, 0, 0);
-    sleep(1);
+    usleep(100000);
     read_response(uart_filestream, &rx_buffer[0]);
 
     // for(int i =0 ; i<13; i++){

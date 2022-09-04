@@ -9,10 +9,16 @@
 #include "bme280.h"
 #include "temperaturas.h"
 
-
 void SolicitaTempInterna()
 {
-    printf("\nTemperatura Interna: %.2f \n", get_temperature(SOLICITARTEMP));
+    if (get_temperature(SOLICITARTEMP) < 0)
+    // {
+    //     get_temperature(SOLICITARTEMP);
+    // }
+    // else
+    // {
+        printf("\nTemperatura Interna: %.2f \n", get_temperature(SOLICITARTEMP));
+    // }
 }
 
 void SolicitaTempRef()

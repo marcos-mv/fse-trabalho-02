@@ -2,12 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <time.h>
 
 #include "uart.h"
 #include "pwm.h"
 #include "menu.h"
 #include "bme280.h"
 #include "temperaturas.h"
+#include "telainicial.h"
 
 void LeComandoUsuario()
 {
@@ -18,18 +20,24 @@ void LeComandoUsuario()
         int comando = get_user_comand(LECOMANDOUSUARIO);
         sleep(1);
 
-        if (comando == 0x01)
-        {
-            printf("Ligando Airfryer\n");
-        }
-        else if (comando == 0x02)
+        if (comando == 0x02)
         {   
-            printf("Desligando Airfryer\n");
-            exit(0);
+            printf("Desligando Airfryer\n");        //Desliga Airfryer e manda o usuário para a tela de seleção de opções.
+            telaInicial();
         }
         else if (comando == 0x03)
         {
             printf("Iniciando Aquecimento\n");
+
+            while (get_user_comand(LECOMANDOUSUARIO) != 0x02 || get_user_comand(LECOMANDOUSUARIO) != 0x04)
+        {   
+            get_user_comand(LECOMANDOUSUARIO);
+            SolicitaTempInterna();
+            SolicitaTempRef();
+            SolicitaTempAmbiente();
+            time_t clk = time(NULL);
+            printf("%s", ctime(&clk));
+        }
 
         }
         else if (comando == 0x04)
@@ -49,7 +57,7 @@ void LeComandoUsuario()
         }
         else
             {
-                printf("Abrindo Menu\n");
+                
             }
     }
 }
@@ -107,47 +115,44 @@ void telaInicial()
 
     printf("Escolha o modo de funcionamento.\n");
 
-    printf("1 - Liga o Forno                    2 - Desliga o Forno\n");
-    printf("3 - Inicia Aquecimento              4 - Cancela processo\n");
-    printf("5 - Tempo +                         6 - Tempo -\n");
-    printf("7 - Menu                            8 - Solicita Temp interna e de Referência\n");
-    printf("9 - Lê comandos do Usuário\n");
-    printf("10 - Envia Sinal de Controle        11 - Envia Sinal de Referência\n");
-    printf("12 - Envia Estado do Sistema        13 - Modo de Controle da Temperatura de Referência\n");
-    printf("13 - Envia Estado de Funcionamento      14 - Envia Valor do Temporizador\n");
+    printf("1 - Desliga o Forno\n");
+    printf("2 - Inicia Aquecimento              3 - Cancela processo\n");
+    printf("4 - Tempo +                         5 - Tempo -\n");
+    printf("6 - Menu\n\n");
+    printf("7 - Solicita Temperaturas           8 - Lê comandos do Usuário\n");
+    printf("9 - Envia Sinal de Controle         10 - Envia Sinal de Referência\n");
+    printf("11 - Envia Estado do Sistema        12 - Modo de Controle da Temperatura de Referência\n");
+    printf("13 - Envia Estado de Funcionamento  14 - Envia Valor do Temporizador\n");
 
     scanf("%d", &opcao);
 
     switch (opcao)
     {
     case 1:
-        ligandoForno();
-        break;
-    case 2:
         printf("Desligando Forno.\n");
         desligaForno();
         break;
-    case 3:
+    case 2:
         printf("Iniciando Aquecimento\n");
         iniciaAquecimento();
         break;
-    case 4:
+    case 3:
         printf("Processo Cancelado.\n");
         cancelaProcesso();
         break;
-    case 5:
+    case 4:
         printf("Mais 1 min.\n");
         maisUmMinuto();
         break;
-    case 6:
+    case 5:
         printf("Menos 1 min.\n");
         menosUmMinuto();
         break;
-    case 7:
+    case 6:
         printf("Acessando Menu.\n");
         menu();
         break;
-    case 8:
+    case 7:
         printf("Solicitando Temp Interna, de Referencia e Ambiente\n");
 
         while (1)
@@ -159,15 +164,15 @@ void telaInicial()
         }
 
         break;
-    case 9:
+    case 8:
         printf("Lendo Comandos do Usuário.\n");
         LeComandoUsuario();
         break;
-    case 10:
+    case 9:
         printf("Envia Sinal de Controle.\n");
         EnviaSinalControle();
         break;
-    case 11:
+    case 10:
         printf("Envia Sinal de Referência.\n");
         EnviaSinalReferencia();
         break;

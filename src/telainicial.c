@@ -21,28 +21,28 @@ void LeComandoUsuario()
         sleep(1);
 
         if (comando == 0x02)
-        {   
-            printf("Desligando Airfryer\n");        //Desliga Airfryer e manda o usuário para a tela de seleção de opções.
-            telaInicial();
+        {
+            printf("Desligando Airfryer\n"); // Desliga Airfryer e manda o usuário para a tela de seleção de opções.
+            exit(0);
         }
         else if (comando == 0x03)
         {
             printf("Iniciando Aquecimento\n");
 
             while (get_user_comand(LECOMANDOUSUARIO) != 0x02 || get_user_comand(LECOMANDOUSUARIO) != 0x04)
-        {   
-            get_user_comand(LECOMANDOUSUARIO);
-            SolicitaTempInterna();
-            SolicitaTempRef();
-            SolicitaTempAmbiente();
-            time_t clk = time(NULL);
-            printf("%s", ctime(&clk));
-        }
-
+            {
+                get_user_comand(LECOMANDOUSUARIO);
+                SolicitaTempInterna();
+                SolicitaTempRef();
+                SolicitaTempAmbiente();
+                time_t clk = time(NULL);
+                printf("%s", ctime(&clk));
+            }
         }
         else if (comando == 0x04)
         {
             printf("Cancelando Processo\n");
+            telainicial();
         }
         else if (comando == 0x05)
         {
@@ -52,13 +52,13 @@ void LeComandoUsuario()
         {
             printf("- 1 minuto\n");
         }
-        else if( comando == 0x07){
+        else if (comando == 0x07)
+        {
             printf("Abrindo menu");
         }
         else
-            {
-                
-            }
+        {
+        }
     }
 }
 void EnviaSinalControle()
@@ -100,6 +100,8 @@ void cancelaProcesso()
 void maisUmMinuto()
 {
     printf("\nMais um Minuto\n");
+
+    telaInicial(int tempo,  );
 }
 
 void menosUmMinuto()
@@ -107,10 +109,14 @@ void menosUmMinuto()
     printf("\nMenos um Minuto\n");
 }
 
-void telaInicial()
+void telaInicial(int tempo, float temperatura)
 {
     int opcao = 0;
-
+    int tempo1 = tempo;
+    int aquecimento = 0;
+    int resfriamento = 0;
+    int temperatura1 = temperatura;
+    
     printf("            ====Airfrier====\n");
 
     printf("Escolha o modo de funcionamento.\n");

@@ -20,4 +20,4 @@ void cancelaProcesso();
 void maisUmMinuto();
 void menosUmMinuto();
 
-void telaInicial();
+void telaInicial(int tempo, float temperatura);

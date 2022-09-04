@@ -12,7 +12,7 @@
 
 void SolicitaTempInterna()
 {
-    printf("Temperatura Interna: %.2f \n", get_temperature(SOLICITARTEMP));
+    printf("\nTemperatura Interna: %.2f \n", get_temperature(SOLICITARTEMP));
 }
 
 void SolicitaTempRef()

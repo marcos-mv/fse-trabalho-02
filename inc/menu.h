@@ -1,5 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void menu();
+void recebeValores(float temperatura, int tempo, char *alimento, int opcao);
 

@@ -33,35 +33,28 @@ void EnviaSinalReferencia()
         sleep(1);
     }
 }
-void modo6()
-{
-    printf("modo 6\n");
-}
-void modo8()
-{
-    printf("modo 8\n");
-}
+
 void ligandoForno(){
-    printf("Ligando Forno");
+    printf("\nLigando Forno\n");
 }
 void desligaForno(){
-    printf("Desligando Forno");
+    printf("\nDesligando Forno\n");
 }
 
 void iniciaAquecimento(){
-    printf("Iniciando Aquecimento");
+    printf("\nIniciando Aquecimento\n");
 }
 
 void cancelaProcesso(){
-    printf("Processo Cancelado");
+    printf("\nProcesso Cancelado\n");
 }
 
 void maisUmMinuto(){
-    printf("Mais um Minuto");
+    printf("\nMais um Minuto\n");
 }
 
 void menosUmMinuto(){
-    printf("Menos um Minuto");
+    printf("\nMenos um Minuto\n");
 }
 
 void telaInicial(){
@@ -82,12 +75,9 @@ void telaInicial(){
 
     scanf("%d", &opcao);
 
-    printf("%d\n", opcao);
-
     switch (opcao)
     {
     case 1:
-        printf("Ligando Forno\n");
         ligandoForno();
         break;
     case 2:

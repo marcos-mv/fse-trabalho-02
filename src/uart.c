@@ -86,6 +86,39 @@ float get_temperature(unsigned char sub_code) {
     return temperature;
 }
 
+int get_user_comand(unsigned char sub_code) {
+    int uart_filestream = -1;
+    unsigned char rx_buffer[9];
+    int user_command;
+    short crc, check_crc;
+
+    uart_filestream = open_uart();
+    if (uart_filestream == -1) {
+        return -1.0;
+    }
+
+    set_attributes(uart_filestream);
+    send_request(uart_filestream, GET_CODE, sub_code, 0, 0);
+    sleep(1);
+    read_response(uart_filestream, &rx_buffer[0]);
+
+    // for(int i =0 ; i<13; i++){
+    //     printf("-%x \n",rx_buffer[i]);
+    // }
+
+    memcpy(&user_command, &rx_buffer[3], 4);
+    memcpy(&crc, &rx_buffer[7], 2);
+    check_crc = get_CRC(&rx_buffer[0], 7);
+
+    if (rx_buffer[0] != 0x00 || rx_buffer[1] != 0x23 || rx_buffer[2] != sub_code || crc != check_crc)
+        return -1.0;
+    close(uart_filestream);
+
+    // printf("Temperatura Interna %f \n", temperature);
+
+    return user_command;
+}
+
 int send_control_signal(int control_signal) {
     int uart_filestream = -1;
 

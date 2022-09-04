@@ -18,7 +18,6 @@
 
 #define ENABLE  0b00000100 // Enable bit
 
-
 void typeChar(char val);
 int fd;  // seen by all subroutines
 
@@ -152,18 +151,19 @@ void mostra_tempo(float tempo){
   typeFloat(tempo);
 }
 
-void mostra_menu(int opcao_menu){
+void mostra_menu(float temperatura, int tempo, char *alimento, int opcao){
     printf("ENTREI");
-    switch (opcao_menu){
+
+    switch (opcao){
     case 1:
         ClrLcd(); 
         lcdLoc(LINHA1);
-        typeln("Frango");
+        typeln(alimento);
         lcdLoc(LINHA2);
         typeln("TIME:");
-        typeFloat(1.0);
+        typeFloat(tempo);
         typeln("Temp:");
-        typeFloat(80);
+        typeFloat(temperatura);
     break;
     case 2:
         ClrLcd(); 
@@ -171,9 +171,9 @@ void mostra_menu(int opcao_menu){
         typeln("Peixe");
         lcdLoc(LINHA2);
         typeln("TIME:");
-        typeFloat(1.0);
+        typeFloat(tempo);
         typeln("Temp:");
-        typeFloat(80);
+        typeFloat(temperatura);
                
     break;
     case 3:
@@ -182,9 +182,9 @@ void mostra_menu(int opcao_menu){
         typeln("Pão de Queijo");
         lcdLoc(LINHA2);
         typeln("TIME:");
-        typeFloat(1.0);
+        typeFloat(tempo);
         typeln("Temp:");
-        typeFloat(80);
+        typeFloat(temperatura);
     break;
     case 4:
         ClrLcd(); 
@@ -192,9 +192,9 @@ void mostra_menu(int opcao_menu){
         typeln("Bolo");
         lcdLoc(LINHA2);
         typeln("TIME:");
-        typeFloat(1.0);
+        typeFloat(tempo);
         typeln("Temp:");
-        typeFloat(80);
+        typeFloat(temperatura);
     break;
     case 5:
         ClrLcd(); 
@@ -202,9 +202,9 @@ void mostra_menu(int opcao_menu){
         typeln("Pudim");
         lcdLoc(LINHA2);
         typeln("TIME:");
-        typeFloat(1.0);
+        typeFloat(tempo);
         typeln("Temp:");
-        typeFloat(80);
+        typeFloat(temperatura);
     break;
     case 6:
         ClrLcd(); 
@@ -212,9 +212,9 @@ void mostra_menu(int opcao_menu){
         typeln("Carne de Porco");
         lcdLoc(LINHA2);
         typeln("TIME:");
-        typeFloat(1.0);
+        typeFloat(tempo);
         typeln("Temp:");
-        typeFloat(80);
+        typeFloat(temperatura);
     break;
     case 7:
         ClrLcd(); 
@@ -222,9 +222,9 @@ void mostra_menu(int opcao_menu){
         typeln("Batata Frita");
         lcdLoc(LINHA2);
         typeln("TIME:");
-        typeFloat(1.0);
+        typeFloat(tempo);
         typeln("Temp:");
-        typeFloat(80);
+        typeFloat(temperatura);
     break;
     case 8:
         ClrLcd(); 

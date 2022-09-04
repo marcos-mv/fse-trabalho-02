@@ -11,10 +11,46 @@
 
 void LeComandoUsuario()
 {
+
     while (1)
     {
-        printf("Lendo Comandos do Usuário: %f\n", (LECOMANDOUSUARIO));
+        printf("Lendo Comandos do Usuário: %d\n", get_user_comand(LECOMANDOUSUARIO));
+        int comando = get_user_comand(LECOMANDOUSUARIO);
         sleep(1);
+
+        if (comando == 0x01)
+        {
+            printf("Ligando Airfryer\n");
+        }
+        else if (comando == 0x02)
+        {   
+            printf("Desligando Airfryer\n");
+            exit(0);
+        }
+        else if (comando == 0x03)
+        {
+            printf("Iniciando Aquecimento\n");
+
+        }
+        else if (comando == 0x04)
+        {
+            printf("Cancelando Processo\n");
+        }
+        else if (comando == 0x05)
+        {
+            printf("+ 1 minuto\n");
+        }
+        else if (comando == 0x06)
+        {
+            printf("- 1 minuto\n");
+        }
+        else if( comando == 0x07){
+            printf("Abrindo menu");
+        }
+        else
+            {
+                printf("Abrindo Menu\n");
+            }
     }
 }
 void EnviaSinalControle()
@@ -34,30 +70,37 @@ void EnviaSinalReferencia()
     }
 }
 
-void ligandoForno(){
+void ligandoForno()
+{
     printf("\nLigando Forno\n");
 }
-void desligaForno(){
+void desligaForno()
+{
     printf("\nDesligando Forno\n");
 }
 
-void iniciaAquecimento(){
+void iniciaAquecimento()
+{
     printf("\nIniciando Aquecimento\n");
 }
 
-void cancelaProcesso(){
+void cancelaProcesso()
+{
     printf("\nProcesso Cancelado\n");
 }
 
-void maisUmMinuto(){
+void maisUmMinuto()
+{
     printf("\nMais um Minuto\n");
 }
 
-void menosUmMinuto(){
+void menosUmMinuto()
+{
     printf("\nMenos um Minuto\n");
 }
 
-void telaInicial(){
+void telaInicial()
+{
     int opcao = 0;
 
     printf("            ====Airfrier====\n");
@@ -106,9 +149,9 @@ void telaInicial(){
         break;
     case 8:
         printf("Solicitando Temp Interna, de Referencia e Ambiente\n");
-        
+
         while (1)
-        {   
+        {
             sleep(1);
             SolicitaTempInterna();
             SolicitaTempRef();
@@ -131,5 +174,4 @@ void telaInicial(){
     default:
         printf("Modo inexistente. PorFavor escolha novamente.\n");
     }
-
 }

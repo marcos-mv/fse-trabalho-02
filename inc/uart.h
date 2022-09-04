@@ -15,6 +15,7 @@ void set_attributes(int);
 void send_request(int, unsigned char, unsigned char, int, int);
 void read_response(int, unsigned char*);
 float get_temperature(unsigned char);
+int get_user_comand(unsigned char sub_code);
 int send_control_signal(int);
 
 #define SOLICITARTEMP 0XC1

@@ -14,5 +14,5 @@ void liga_lcd(float temperatura_interna, float temperatura_referencia);
 void mostra_ti_tr(float temperatura_interna, float temperatura_referencia);
 void mostra_status(int status);
 void mostra_tempo(float tempo);
-void mostra_menu(int opcao_menu);
+void mostra_menu(float temperatura, int tempo, char *alimento, int opcao);
 #endif /* LCD_H_ */

@@ -9,4 +9,14 @@
 #include "uart.h"
 #include "menu.h"
 
+void LeComandoUsuario();
+void EnviaSinalControle();
+void EnviaSinalReferencia();
+void ligandoForno();
+void desligaForno();
+void iniciaAquecimento();
+void cancelaProcesso();
+void maisUmMinuto();
+void menosUmMinuto();
+
 void telaInicial();

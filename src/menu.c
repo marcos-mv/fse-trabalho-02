@@ -1,86 +1,82 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "telainicial.h"
+#include <string.h>
+
+
+void recebeValores(float temperatura, int tempo, char *alimento){
+
+    printf("\nTemperatura : %.2f°   Tempo: %d min   Alimento: %s \n\n",temperatura , tempo, alimento);
+
+    printf("Recebi os valores.\n\n");
+    telaInicial();
+}
+
+
+
 
 void menu()
 {
     int opcao = 0;
-    int temperatura = 0;
+    float temperatura = 0;
     int tempo = 0;
+    char alimento[16];
 
     printf("=== Lista de Alimentos ===\n");
     printf("Escolha um alimento abaixo.\n");
 
-    printf("1 - Frango a Passarinho      2 - Peixe \n");
-    printf("3 - Pão de Queijo      4 - Coxinha de Frango\n");
-    printf("5 - Pudim      6 - Costelinha de Porco -\n");
-    printf("7 - Batata Frita      8 - Almôndegas\n");
-    printf("9 - Voltar a tela Inicial.\n");
+    printf("1 - Frango a Passarinho     2 - Peixe \n");
+    printf("3 - Pão de Queijo           4 - Coxinha de Frango\n");
+    printf("5 - Pudim                   6 - Costelinha de Porco -\n");
+    printf("7 - Batata Frita            8 - Voltar a tela Inicial.\n");
 
     scanf("%d", &opcao);
-
-    printf("%d\n", opcao);
 
     switch (opcao)
     {
     case 1:
         temperatura = 80;
         tempo = 1;
-        printf("Frango a Passarinho\n");
-        printf("Temperatura %d Tempo: %d min\n", temperatura, tempo);
+        strcpy(alimento,"Frango");
+        recebeValores(temperatura, tempo, alimento);        
         break;
     case 2:
         temperatura = 40;
         tempo = 1;
-        printf("Peixe\n");
-        printf("Temperatura: %d Tempo: %d min\n", temperatura, tempo);
-
+        strcpy(alimento,"Peixe");
+        recebeValores(temperatura, tempo, alimento);
         break;
     case 3:
         temperatura = 45;
         tempo = 1;
-        printf("Pão de Queijo\n");
-        printf("Temperatura: %d Tempo: %d min\n", temperatura, tempo);
-
+        strcpy(alimento,"Pão de Queijo");
+        recebeValores(temperatura, tempo, alimento);
         break;
     case 4:
         temperatura = 50;
         tempo = 1;
-        printf("Coxinha de Frango\n");
-        printf("Temperatura: %d Tempo: %d min\n", temperatura, tempo);
-
+        strcpy(alimento,"Bolo");
+        recebeValores(temperatura, tempo, alimento);
         break;
     case 5:
         temperatura = 70;
         tempo = 1;
-        printf("Pudim\n");
-        printf("Temperatura: %d Tempo: %d min\n", temperatura, tempo);
-
+        strcpy(alimento,"Pudim");
+        recebeValores(temperatura, tempo, alimento);
         break;
     case 6:
         temperatura = 60;
         tempo = 1;
-        printf("Costelinha de Porco\n");
-        printf("Temperatura %d Tempo: %d min\n", temperatura, tempo);
-
+        strcpy(alimento,"Carne de Porco");
+        recebeValores(temperatura, tempo, alimento);
         break;
     case 7:
         temperatura = 80;
         tempo = 1;
-        printf("Batata Frita\n");
-        printf("Temperatura: %d Tempo: %d min\n", temperatura, tempo);
-
+        strcpy(alimento,"Batata Frita");
+        recebeValores(temperatura, tempo, alimento);
         break;
     case 8:
-        temperatura = 90;
-        tempo = 1;
-        printf("Almôndegas\n");
-        printf("Temperatura: %d Tempo: %d min\n", temperatura, tempo);
-
-        break;
-    case 9:
-        temperatura = 90;
-        tempo = 1;
         printf("Voltando para Tela Inicial\n");
         telaInicial();
 

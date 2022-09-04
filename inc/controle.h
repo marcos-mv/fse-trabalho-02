@@ -6,19 +6,20 @@
 
 #include "uart.h"
 #include "pwm.h"
-#include "bme280.h"
-#include "uart.h"
 #include "menu.h"
+#include "bme280.h"
+#include "temperaturas.h"
+#include "telainicial.h"
 
-void LeComandoUsuario();
+
+void leComandoUsuario();
 void EnviaSinalControle();
 void EnviaSinalReferencia();
 void ligandoForno();
 void desligaForno();
 void iniciaAquecimento(int tempo, float temperatura);
 void cancelaProcesso();
-
 void maisUmMinuto(int tempo, float temperatura);
 void menosUmMinuto(int tempo, float temperatura);
-
-void telaInicial(int tempo, float temperatura);
+void aumentaTemperatura(int tempo, float temperatura);
+void diminuiTemperatura(int tempo, float temperatura);

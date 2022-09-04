@@ -12,7 +12,7 @@ void recebeValores(float temperatura, int tempo, char *alimento, int opcao){
     printf("Recebi os valores.\n\n");
     
     // mostra_menu(opcao);
-    telaInicial();
+    telaInicial(tempo,temperatura);
 }
 
 void menu()
@@ -79,7 +79,7 @@ void menu()
     case 8:
         printf("Voltando para Tela Inicial\n");
         // mostra_menu(opcao);
-        telaInicial();
+        telaInicial(0,0);
 
         break;
     default:

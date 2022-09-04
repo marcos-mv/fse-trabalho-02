@@ -20,19 +20,19 @@
 
 int main()
 {
-    int ligado = 0;
+    float temperatura = 0;
+    int tempo = 0;
 
     printf("Sistema Acionado\n");
-    printf("Acione o Botão de Ligar ou digite 1 para iniciar os procedimentos.\n");
+    printf("Acione o Botão de Ligar na Dasboard para iniciar os procedimentos\n");
 
     while(1){
-        scanf("%d", &ligado);
         get_user_comand(LECOMANDOUSUARIO);
-        printf("Comando  do usuário %d\n", get_user_comand(LECOMANDOUSUARIO));
 
-        if(get_user_comand(LECOMANDOUSUARIO) == 0x01 || ligado == 1){
+        if(get_user_comand(LECOMANDOUSUARIO) == 0x01){
+        printf("Comando  do usuário %d\n", get_user_comand(LECOMANDOUSUARIO));
         printf("Ligando Airfryer.\n\n");
-        telaInicial();
+        telaInicial(tempo, temperatura);
         break;
         }
     }

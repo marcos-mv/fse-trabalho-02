@@ -8,8 +8,12 @@
 #include "bme280.h"
 #include "uart.h"
 
-void SolicitaTempInterna();
+float SolicitaTempInterna();
 
-void SolicitaTempRef();
+float SolicitaTempRef();
 
-void SolicitaTempAmbiente();
+float SolicitaTempAmbiente();
+
+void acionaResistor(float temperaturaInterna, float temperaturaRef, int tempo);
+
+void acionaFan(float temperaturaInterna);

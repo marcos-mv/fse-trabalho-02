@@ -24,7 +24,7 @@ int main()
     int tempo = 0;
 
     printf("Sistema Acionado\n");
-    printf("Acione o Botão de Ligar na Dasboard para iniciar os procedimentos\n");
+    printf("\nAcione o Botão de Ligar na Dasboard para iniciar os procedimentos\n");
 
     while(1){
         get_user_comand(LECOMANDOUSUARIO);

@@ -15,8 +15,8 @@
 void leComandoUsuario();
 void EnviaSinalControle();
 void EnviaSinalReferencia();
-void ligandoForno();
-void desligaForno();
+void ligandoAir();
+void desligaAir();
 void iniciaAquecimento(int tempo, float temperatura);
 void cancelaProcesso();
 void maisUmMinuto(int tempo, float temperatura);

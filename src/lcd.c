@@ -126,7 +126,7 @@ void mostra_status(int status){
       // Airfri Iniciada
       lcdLoc(LINHA2);
       //typeln("            ");
-      typeln("PARADO");
+      typeln("Aquecendo");
       break;
     case 1:
       // PRE-AQUECENDO
@@ -138,7 +138,7 @@ void mostra_status(int status){
       // RESFRIANDO
       lcdLoc(LINHA2);
       //typeln("            ");
-      typeln("RESFRIANDO");
+      typeln("Resfriando");
       break;
   default:
     break;

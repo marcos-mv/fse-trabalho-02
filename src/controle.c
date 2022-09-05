@@ -7,40 +7,47 @@ void leComandoUsuario()
         printf("Lendo Comandos do Usuário: %d\n", get_user_comand(LECOMANDOUSUARIO));
         int comando = get_user_comand(LECOMANDOUSUARIO);
 
+        sleep(1);
+
         if (comando == 0x02)
         {
-            printf("Desligando Airfryer\n"); // Desliga Airfryer e manda o usuário para a tela de seleção de opções.
-            exit(0);
+            desligaAir();
         }
         else if (comando == 0x03)
         {
             printf("Iniciando Aquecimento\n");
 
-            while (get_user_comand(LECOMANDOUSUARIO) != 0x02 || get_user_comand(LECOMANDOUSUARIO) != 0x04)
+            while (get_user_comand(LECOMANDOUSUARIO) != 4)
             {
+                if (get_user_comand(LECOMANDOUSUARIO) == 2)
+                {   
+                    printf("\ncomando usuario: %d", get_user_comand(LECOMANDOUSUARIO));
+                    desligaAir();
+                }
                 get_user_comand(LECOMANDOUSUARIO);
+                sleep(1);
                 printf("\ncomando usuario: %d", get_user_comand(LECOMANDOUSUARIO));
                 SolicitaTempInterna();
                 SolicitaTempRef();
                 SolicitaTempAmbiente();
                 time_t clk = time(NULL);
-                printf("%s", ctime(&clk));
+                printf("%s,%f,%f,%f", ctime(&clk),SolicitaTempInterna(),SolicitaTempRef(),SolicitaTempAmbiente());
             }
         }
         else if (comando == 0x04)
         {
             printf("Cancelando Processo\n");
-            telaInicial(0,0);
+            telaInicial(0, 0);
         }
         else if (comando == 0x05)
         {
             printf("+ 1 minuto\n");
-            maisUmMinuto(1,200);
+            maisUmMinuto(1, 200);
         }
         else if (comando == 0x06)
         {
             printf("- 1 minuto\n");
-            menosUmMinuto(1,100);
+            menosUmMinuto(1, 100);
         }
         else if (comando == 0x07)
         {
@@ -49,7 +56,7 @@ void leComandoUsuario()
         }
         else
         {
-            printf("Comando Inexistente.\n");            
+            printf("Comando Inexistente.\n");
         }
         usleep(1000000);
     }
@@ -66,25 +73,26 @@ void EnviaSinalReferencia()
 {
     while (1)
     {
-        printf("Envia Sinal de Referência %d\n", get_temperature(LECOMANDOUSUARIO));
+        printf("Envia Sinal de Referência %f\n", get_temperature(LECOMANDOUSUARIO));
         usleep(600000);
     }
 }
 
-void ligandoForno()
+void ligandoAir()
 {
-    printf("\nLigando Forno\n");
+    printf("\nLigando Airfryer\n");
 }
-void desligaForno()
+void desligaAir()
 {
-    printf("\nDesligando Forno\n");
+    printf("\nDesligando Airfryer\n");
+    exit(0);
 }
 
 void iniciaAquecimento(int tempo, float temperatura)
 {
 
     printf("\nIniciando Aquecimento\n");
-    acionaResistor(SolicitaTempInterna(),SolicitaTempRef(),tempo);
+    acionaResistor(SolicitaTempInterna(), SolicitaTempRef(), tempo);
     SolicitaTempInterna();
     SolicitaTempRef();
 }
@@ -101,7 +109,7 @@ void maisUmMinuto(int tempo, float temperatura)
 {
     int newtempo = tempo + 1;
 
-    printf("\nTempo %d Temperatura: %d\n", newtempo, temperatura);
+    printf("\nTempo %d Temperatura: %f\n", newtempo, temperatura);
 
     telaInicial(newtempo, temperatura);
 }
@@ -128,7 +136,7 @@ void diminuiTemperatura(int tempo, float temperatura)
 {
     float newTemperatura = temperatura - 5;
 
-    printf("\nTempo %d Temperatura: %d\n", tempo, newTemperatura);
+    printf("\nTempo %d Temperatura: %f\n", tempo, newTemperatura);
 
     telaInicial(tempo, newTemperatura);
 }

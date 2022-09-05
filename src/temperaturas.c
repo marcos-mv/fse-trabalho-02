@@ -43,7 +43,7 @@ void acionaResistor(float temperaturaInterna, float temperaturaRef, int tempo){
 
             if(j==60){
                 tempo --;
-                j==0;
+                j=0;
             }           
         };
     }

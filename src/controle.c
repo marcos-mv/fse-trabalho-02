@@ -3,11 +3,10 @@
 void leComandoUsuario()
 {
     while (1)
-    {
-        printf("Lendo Comandos do Usuário: %d\n", get_user_comand(LECOMANDOUSUARIO));
+    {   
+        
         int comando = get_user_comand(LECOMANDOUSUARIO);
-
-        sleep(1);
+        printf("Lendo Comandos do Usuário: %d\n", get_user_comand(LECOMANDOUSUARIO));
 
         if (comando == 0x02)
         {
@@ -31,7 +30,8 @@ void leComandoUsuario()
                 SolicitaTempRef();
                 SolicitaTempAmbiente();
                 time_t clk = time(NULL);
-                printf("%s,%f,%f,%f", ctime(&clk),SolicitaTempInterna(),SolicitaTempRef(),SolicitaTempAmbiente());
+                printf("%s\n",ctime(&clk));
+                // printf("\n\n%s,%.2f,%.2f,%.2f\n\n", ctime(&clk),SolicitaTempInterna(),SolicitaTempRef(),SolicitaTempAmbiente());
             }
         }
         else if (comando == 0x04)
@@ -53,6 +53,9 @@ void leComandoUsuario()
         {
             printf("Abrindo menu");
             menu();
+        }
+        else if (comando <= 0)
+        {
         }
         else
         {

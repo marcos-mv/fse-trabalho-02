@@ -22,7 +22,7 @@ void telaInicial(int tempo, float temperatura)
     
     printf("            ====Airfrier====\n");
 
-    printf("\nTempo: %d min Temperatura: %f\n\n", tempo1, temperatura1);
+    printf("\nTempo: %d min Temperatura: %.2f\n\n", tempo1, temperatura1);
 
     printf("Escolha o modo de funcionamento.\n");
 

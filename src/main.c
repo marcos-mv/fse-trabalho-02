@@ -23,7 +23,7 @@ int main()
     float temperatura = 0;
     int tempo = 0;
 
-    printf("Sistema Acionado\n");
+    printf("\n\nSistema Acionado\n");
     printf("\nAcione o Botão de Ligar na Dasboard para iniciar os procedimentos\n");
 
     while(1){
